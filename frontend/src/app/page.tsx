@@ -44,6 +44,9 @@ const BenchmarkApp = () => {
   const [error, setError] = useState(''); // Stores error messages.
   const [comment, setComment] = useState(''); // Manages user comments.
 
+  // Backend URL for API interaction
+  const backendUrl = 'https://benchmark-platform.onrender.com';
+
   // Handles file uploads and communicates with the backend API.
   const handleUpload = async (file: File | null, type: 'model' | 'dataset') => {
     if (!file) return; // Exit if no file is selected.
@@ -59,7 +62,7 @@ const BenchmarkApp = () => {
 
     try {
       setError(''); // Clear any existing errors.
-      const response = await fetch(`https://benchmark-platform.onrender.com:10000/upload-${type}`, {
+      const response = await fetch(`${backendUrl}:10000/upload-${type}`, {
         method: 'POST', // POST request to backend.
         body: formData, // Send file data.
       });
@@ -89,7 +92,7 @@ const BenchmarkApp = () => {
     setLoading(true); // Indicate benchmarking is in progress.
     setError(''); // Clear any existing errors.
     try {
-      const response = await fetch(`https://benchmark-platform.onrender.com:10000/benchmark?model_id=${modelFile}&dataset_id=${datasetFile}`, {
+      const response = await fetch(`${backendUrl}:10000/benchmark?model_id=${modelFile}&dataset_id=${datasetFile}`, {
         method: 'POST', // POST request to backend.
       });
 
@@ -296,6 +299,7 @@ const BenchmarkApp = () => {
 
 // Export the component to use it in the application.
 export default BenchmarkApp;
+
 
 
 
