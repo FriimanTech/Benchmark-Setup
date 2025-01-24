@@ -59,7 +59,7 @@ const BenchmarkApp = () => {
 
     try {
       setError(''); // Clear any existing errors.
-      const response = await fetch(`http://localhost:8000/upload-${type}`, {
+      const response = await fetch(`https://benchmark-platform.onrender.com:10000/upload-${type}`, {
         method: 'POST', // POST request to backend.
         body: formData, // Send file data.
       });
@@ -89,7 +89,7 @@ const BenchmarkApp = () => {
     setLoading(true); // Indicate benchmarking is in progress.
     setError(''); // Clear any existing errors.
     try {
-      const response = await fetch(`http://localhost:8000/benchmark?model_id=${modelFile}&dataset_id=${datasetFile}`, {
+      const response = await fetch(`https://benchmark-platform.onrender.com:10000/benchmark?model_id=${modelFile}&dataset_id=${datasetFile}`, {
         method: 'POST', // POST request to backend.
       });
 
